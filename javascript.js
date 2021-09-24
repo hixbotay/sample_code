@@ -33,3 +33,44 @@ fetch("https://url.com", {
 .catch((error) => {
   
 });
+
+/*sample class*/
+function RouteApi(){
+	this.key = 'secretkey';
+	this.setHeader = function(){
+		return {
+			'Content-Type': 'application/json',
+			'key': this.key
+		};
+	}
+
+
+	this.post = function(url,data){
+		return fetch(url, {
+			method: 'post',
+			headers: this.setHeader(),
+			body: JSON.stringify(data)
+		})
+		.then((response) => {
+			return response.json()
+		})
+		.then((jsonData) => {
+			return jsonData;
+		});
+	};
+
+	this.get = function (url){
+		return fetch(url, {
+			method: 'get',
+			headers: this.setHeader()
+		})
+		.then((response) => {
+			return response.json()
+		})
+		.then((jsonData) => {
+			return jsonData;
+		});
+	}
+
+	
+}
