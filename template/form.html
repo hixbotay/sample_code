@@ -1,0 +1,6 @@
+<!--File input-->
+<div class="file-input form-control input-small mb-0">
+    <input type="file" id="input_id" class="hidden" onchange="jQuery('#input_label').text(jQuery(this).val())" required="required" name="" placeholder="">
+    <span class="grey text" id="input_label"><?= __('Drag your file here or', 'flatsome-child') ?></span>
+    <label type="button" class="btn bg-orange black pull-right" for="input_id">Browse</label>
+</div>
