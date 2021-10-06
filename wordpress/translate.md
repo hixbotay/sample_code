@@ -6,4 +6,5 @@
 > php C:\xampp\php\wp-cli.phar i18n make-pot .\wp-content\themes\flatsome-child
 > 
 _the above command will get all php code with **<?= __('your text','flatsme-child')?>**_
+
 4. Run url **<your domain>/debug/translate.php** to write to po file
