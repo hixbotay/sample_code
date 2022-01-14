@@ -1,0 +1,31 @@
+web:
+  restart: always
+  build: ./django
+#  image: python:2.7
+  environment:
+    - "TZ=Japan"
+  volumes:
+    - ./django:/usr/src/app
+  links:
+    - db:mongo
+
+proxy:
+  restart: always
+  image: nginx:1.13
+  environment:
+    - "TZ=Japan"
+  expose:
+    - "80"
+  ports:
+    - "8001:80"
+  links:
+    - web:web
+  volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+
+db:
+  restart: always
+  image: mongo:3.4
+  volumes:
+    - ./mongodb/mongod.conf:/etc/mongod.conf
+  command: mongod --config /etc/mongod.conf
