@@ -1,3 +1,4 @@
+# Option 1: Manual
 1. Go to php directory then download wp-cli by command
 
 >curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -8,3 +9,4 @@
 _the above command will get all php code with **<?= __('your text','flatsme-child')?>**_
 
 3. Run url **your domain/debug/translate.php** to write to po file
+# Option 2: Use loco translate plugin
