@@ -1,4 +1,4 @@
-###Sample code for wordpress
+# Sample code for wordpress
 
 Add contact button 
 ```
