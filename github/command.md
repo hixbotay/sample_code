@@ -26,3 +26,7 @@ git stash push
 git checkout <other branch>
 git stash apply
 ```
+Merger from other branch
+```
+git fetch && git rebase origin/branch_name
+```
