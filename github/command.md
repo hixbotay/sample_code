@@ -9,6 +9,15 @@ Clear all local commit
 git reset --soft HEAD~1
 git pull
 ```
+Create and checkout new branch
+```
+git checkout -b <new-branch>
+```
+Create branch from other branch
+```
+git fetch --all
+git checkout -b ＜new-branch＞ ＜old-branch＞
+```
 Delete branch
 ```
 git branch -D <branch> #force delete, soft delete sử dụng -d
