@@ -39,3 +39,7 @@ Merger from other branch
 ```
 git fetch && git rebase origin/branch_name
 ```
+Cancel rebase
+```
+git rebase --abort
+```
