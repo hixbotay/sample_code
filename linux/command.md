@@ -1,4 +1,4 @@
-#Common command in linux
+# Common command in linux
 
 set default folder when login
 copy below command to last line of /home/centos/.bashrc
@@ -26,6 +26,18 @@ du -a /var | sort -n -r | head -n 10
 Delete file content
 ```
 > file_name.txt
+```
+Find text in a folder
+```
+grep -rnw '/path/to/dir' -e 'text_to_search'
+```
+Copy file overide if exist
+```
+\cp -r /path/copy/file /path/target
+```
+or
+```
+yes | cp -r /path/copy/file /path/target
 ```
 Delete log File
 ```
