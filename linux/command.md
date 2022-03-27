@@ -14,7 +14,7 @@ disable SELinux to folder
 ```
 chcon -Rt httpd_sys_content_t /path/to/www
 ```
-#File
+# File
 Check largest files in hard disk
 ```
 DU -HSX * | SORT -RH | HEAD -NX
