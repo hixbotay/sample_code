@@ -14,6 +14,18 @@ disable SELinux to folder
 ```
 chcon -Rt httpd_sys_content_t /path/to/www
 ```
+Run scrip in background
+```
+# All output directed to nohup.out.
+nohup /home/my_user/scripts/my_script.sh &
+
+# All output captured by logfile.
+nohup /home/my_user/scripts/my_script.sh >> /home/my_user/scripts/logs/my_script.log 2>&1 &
+```
+Checking Background Jobs
+```
+jobs
+```
 # File
 Check largest files in hard disk
 ```
