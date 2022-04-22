@@ -56,7 +56,7 @@ S3bucket_node3 = glueContext.write_dynamic_frame.from_options(
     connection_type="s3",
     format="json",
     connection_options={
-        "path": "s3://dev-hadakarte-export/export/published-content-daily/"+date_now,
+        "path": "s3://path_to_export/"+date_now,
         "partitionKeys": [],
     },
     transformation_ctx="S3bucket_node3",
