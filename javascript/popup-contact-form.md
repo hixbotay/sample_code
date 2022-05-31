@@ -1,13 +1,13 @@
 # popup contact form to send mail via ajax using bootstrap modal
 
 html
-'''
+```
 <button type="butotn" onclick="showContactForm()">Contact</button>
-'''
+```
 
 javascript
 
-'''
+```
 
 function showContactForm(){
 	if(document.getElementById('contactFormModal')){
@@ -122,4 +122,4 @@ function showContactResult(msg){
 	jQuery('#contactResultModal').modal('show');
 	return;
 }
-'''
+```
