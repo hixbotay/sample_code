@@ -56,7 +56,7 @@ function showContactForm(){
 function sendMail(){
 	jQuery.ajax({
 		type: "POST",
-		url: "https://wsoftpro.com/ajax/contact.php",
+		url: "https://your-script.com/ajax/contact.php",
 		dataType: 'json',
 		data: {
 			'name':jQuery('recipient-name').val(),
