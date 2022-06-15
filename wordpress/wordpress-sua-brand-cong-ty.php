@@ -6,7 +6,7 @@ include 'functions/auto-save-image.php';
 
 function remove_footer_admin()
 {
-    echo '<span id="footer-thankyou">Developed by <a href="https://freelancerviet.net">Vuasoft</a></span>';
+    echo '<span id="footer-thankyou">Developed by <a href="https://freelancerviet.net">Freelancerviet.net</a></span>';
 }
 
 add_filter('admin_footer_text', 'remove_footer_admin');
@@ -18,7 +18,7 @@ function add_top_link_to_admin_bar($admin_bar)
     // add a parent item
     $args = array(
         'id' => 'freelancerviet',
-        'title' => 'Vuasoft',
+        'title' => 'Freelancerviet.net',
         'href' => 'https://freelancerviet.net/', // Showing how to add an external link
     );
     $admin_bar->add_node($args);
