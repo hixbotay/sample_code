@@ -13,3 +13,10 @@ Limit post revision
 ```
 define('WP_POST_REVISIONS', 2);
 ```
+Disable update notification for plugin
+```
+add_filter( 'site_transient_update_plugins', function ( $value ) {
+    unset( $value->response['advanced-custom-fields-pro/acf.php'] );
+    return $value;
+} );
+```
