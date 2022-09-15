@@ -26,3 +26,9 @@ function get_client_ip() {
     return $ipaddress;
 }
 ```
+Write file as utf-8 bom
+```
+$fh = fopen($filepath, 'w') ;
+fwrite($fh, "\xEF\xBB\xBF");
+fwrite($fh, "Your content");
+```
