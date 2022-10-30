@@ -79,3 +79,12 @@ lsblk #show disk volumn
 sudo growpart /free_disk_path 1
 sudo xfs_growfs -d /
 ```
+# DATABASE
+Dump the database to a sql file
+```
+mysqldump -u root -p root_password database_name > dumpfilename.sql
+```
+Restore the database
+```
+mysql -u username -p database_name < backup_name.sql
+```
