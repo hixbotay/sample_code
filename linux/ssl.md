@@ -11,12 +11,12 @@ Add new domain without stop nginx
 
 <sub>
 Make sure /etc/nginx/conf.d/*.conf have the block
-```
+<sub>
 location ~ /.well-known {
   root /your/config/path;
   allow all;
 }
-```
+</sub>
 </sub>
 
 ```
