@@ -11,13 +11,14 @@ Add new domain without stop nginx
 
 <sub>
 Make sure /etc/nginx/conf.d/*.conf have the block
+</sub>
+
 <sup>
 location ~ /.well-known {
   root /your/config/path;
   allow all;
 }
 </sup>
-</sub>
 
 ```
 sudo certbot certonly -a webroot --webroot-path=/your/config/path -d www.example.com
