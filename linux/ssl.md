@@ -5,7 +5,18 @@ certbot certificates
 ```
 Add new domain
 ```
-certbot --nginx -d example.com -d www.example.com
+certbot certonly --standalone -d www.example.com
+```
+Add new domain without stop nginx
+  Make sure /etc/nginx/conf.d/*.conf have the block
+  ```
+  location ~ /.well-known {
+    root /your/config/path;
+    allow all;
+  }
+  ```
+```
+sudo certbot certonly -a webroot --webroot-path=/your/config/path -d www.example.com
 ```
 update new domain to existed domain "domain.vn"
 ```
