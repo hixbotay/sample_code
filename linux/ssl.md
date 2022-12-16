@@ -8,18 +8,11 @@ Add new domain
 certbot certonly --standalone -d www.example.com
 ```
 Add new domain without stop nginx
-
-<sub>
-Make sure /etc/nginx/conf.d/*.conf have the block
-</sub>
-
-<sup>
-location ~ /.well-known {
-  root /your/config/path;
-  allow all;
-}
-</sup>
-
+> Make sure /etc/nginx/conf.d/*.conf have the block
+> location ~ /.well-known {
+>   root /your/config/path;
+>   allow all;
+> }
 ```
 sudo certbot certonly -a webroot --webroot-path=/your/config/path -d www.example.com
 ```
