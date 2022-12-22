@@ -26,7 +26,6 @@ add_shortcode('fvn-donate', function ($atts) {
 	</div>
 </div>
 
-</style>
 	<?php
 	$output = ob_get_contents();
 	ob_end_clean();
