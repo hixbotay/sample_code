@@ -1,0 +1,312 @@
+<div id="app">
+  <div class="wrap" v-bind:class="{ show: loaded }" style="display: none;">
+    <div class="tablenav top">
+      <div class="row">
+        <div class="col">
+          <button class="button" type="" @click="newItem()">Thêm mới</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col medium-3">
+          <datepicker format="yyyy-MM-dd" :language="datepickerLang" placeholder="Từ ngày" input-class="input pull-left"
+            v-model="queryFromDate" name="queryFromDate"></datepicker>
+        </div>
+        <div class="col medium-3">
+          <datepicker format="yyyy-MM-dd" :language="datepickerLang" placeholder="Đến ngày"
+            input-class="input pull-left" v-model="queryToDate" name="queryToDate"></datepicker>
+        </div>
+        <div class="col medium-3">
+          <button class="button" type="" @click="searchItem()">Tìm
+            kiếm</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <table class="wp-list-table widefat striped posts">
+        <thead>
+          <tr>
+            <th>Mã đơn hàng</th>
+            <th>Số tiền</th>
+            <th>Trạng thái</th>
+            <th>Ngày tạo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in items">
+            <td><a href="javascript:void(0)" @click="selectItem(item)">{{ item.number }}</a></td>
+            <td>{{ displayNumber(item.amount) }}</td>
+            <td>{{ item.status_string }}</td>
+            <td>{{ displayDate(item.created_at) }}</td>
+            <td><button @click="deleteItem(item)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div v-if="screen == 'detail'" class="fvn-overlay">
+        <div class="fvn-popup">
+          <h2>
+            <span v-if="itemDetail.id > 0">Modify </span>
+            <span v-if="itemDetail.id == false">New </span>
+          </h2>
+          <input v-model="itemDetail.id" type="hidden" />
+          <div class="form-group row">
+            <label class="col medium-6 form-label">Mã đơn hàng<span class="text-danger">*</span></label>
+            <div class="col medium-6 ">
+              <input v-model="itemDetail.number" type="text" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col medium-6 form-label">Tiền<span class="text-danger">*</span></label>
+            <div class="col medium-6 ">
+              <input v-model="itemDetail.amount" type="text" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col medium-6 form-label">Trạng thái<span class="text-danger">*</span></label>
+            <div class="col medium-6 ">
+              <input v-model="itemDetail.status_string" type="text" />
+            </div>
+          </div>
+          <button type="button" class="button toolbar_action" title="Thêm" @click="save()">Submit</button>
+          <button type="button" class="button toolbar_action" @click="changeScreen('list')">Hủy bỏ</button>
+        </div>
+      </div>
+
+      <div v-if="paging.page > 1" class="pagination">
+        <div class="pagination__status showing-status">
+          Showing <span class="showing-status__pages">1 – {{ paging.page }}</span> of <span
+            class="showing-status__total">{{ paging.total }}</span> Items.
+        </div>
+        <div>
+          <button type="button" class="btn btn-default btn-medium pagination__nav pagination__nav--prev"
+            @click="nextPage(paging.offset - 1)" :disabled="paging.offset == 1">
+            <span class="svg-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" focusable="false">
+                <path fill="#010101"
+                  d="M18.5 3.85l-8.9 9.02 8.9 9.27c.66.65.66 1.71 0 2.36-.67.65-1.74.65-2.4 0L6 14.06c-.33-.33-.5-.76-.5-1.18 0-.43.17-.86.5-1.18L16.1 1.49c.66-.65 1.74-.65 2.41 0 .66.65.66 1.71-.01 2.36z">
+                </path>
+              </svg>
+            </span>
+          </button>
+          <span class="pagination__label">
+            Page:
+            <span class="pagination__current">
+              <input type="text" class="form-control input-medium" v-model="paging.offset" @keydown="searchItem">
+              <span class="form-control input-medium input-size">&nbsp;{{ paging.offset }}&nbsp;</span>
+            </span>
+            of <span class="pagination__total">{{ paging.page }}</span>
+          </span>
+          <button type="button" class="btn btn-default btn-medium pagination__nav pagination__nav--next"
+            @click="nextPage(paging.offset + 1)" :disabled="paging.offset == paging.page">
+            <span class="svg-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" focusable="false">
+                <path fill="#010101"
+                  d="M7.5 22.15l8.9-9.02-8.9-9.28c-.66-.65-.66-1.71 0-2.36.67-.65 1.74-.65 2.4 0L20 11.94c.33.33.5.76.5 1.18 0 .43-.17.86-.5 1.18L9.9 24.51c-.66.65-1.74.65-2.41 0-.66-.65-.66-1.71.01-2.36z">
+                </path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div v-bind:class="{ hidden: loaded }" style="padding-top: 32px;width:50px;margin:0 auto;">
+    <img src="/assets/images/loading.gif" alt="" style="width:100%">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuejs-typeahead@0.2.2/build/build.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuejs-datepicker/1.6.2/vuejs-datepicker.min.js" integrity="sha512-SxUBqfNhPSntua7WUkt171HWx4SV4xoRm14vLNsdDR/kQiMn8iMUeopr8VahPpuvRjQKeOiMJTJFH5NHzNUHYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</div>
+
+<script>
+  function jnotice(msg) {
+    if (jQuery('#jbnotice').length) {
+      jQuery('#jbnotice').remove();
+    }
+    var html = '<div id="jbnotice" style="text-align:center;font-size:20px;border: 1px solid #ccc;background: rgba(95, 186, 125, 1);color:white;position:fixed;width:300px;top:30px;left:30px;line-height:40px;padding:10px;z-index:9999">' + msg + '</div>';
+    jQuery('body').append(html);
+    jQuery('#jbnotice').fadeOut(3000);
+
+  }
+  // route
+  function RouteApi() {
+    this.setHeader = function () {
+      return {
+        'Content-Type': 'application/json'
+      };
+    }
+
+    this.post = function (url, data) {
+      return fetch(url, {
+        method: 'post',
+        headers: this.setHeader(),
+        body: JSON.stringify(data)
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((jsonData) => {
+          return jsonData;
+        });
+    };
+
+    this.put = function (url, data) {
+      return fetch(url, {
+        method: 'put',
+        headers: this.setHeader(),
+        body: JSON.stringify(data)
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((jsonData) => {
+          return jsonData;
+        });
+    };
+
+    this.delete = function (url, data) {
+      return fetch(url, {
+        method: 'delete',
+        headers: this.setHeader(),
+        body: JSON.stringify(data)
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((jsonData) => {
+          return jsonData;
+        });
+    };
+
+    this.get = function (url) {
+      return fetch(url, {
+        method: 'get',
+        headers: this.setHeader()
+      })
+        .then((response) => {
+          return response.json()
+        })
+        .then((jsonData) => {
+          return jsonData;
+        });
+    }
+  }
+  //logic screen
+  var vue_data = {
+    loaded: false,
+    getItemUrl: '',
+    items: [],
+    screen: 'list',
+    paging: {
+      total: 0,
+      offset: 1,
+      page: 0
+    },
+    itemDetail: {},
+    queryToDate: '',
+    queryFromDate: '',
+    querySearch: '',
+    searchPostList: [],
+    searchPostQuery: ''
+  };
+
+  Vue.component('autocomplete', VueBootstrapTypeahead);
+  Vue.component('datepicker', vuejsDatepicker);
+
+  var app = new Vue({
+    el: '#app',
+    data: vue_data,
+    mounted: function () {
+      this.loaded = true;
+      this.searchItem();
+    },
+    computed: {
+    },
+    methods: {
+      changeScreen(scr) {
+        this.screen = scr;
+      },
+      newItem() {
+        this.itemDetail = {
+          id: false,
+          amount: '',
+          status_string: ''
+        };
+        this.screen = 'detail';
+      },
+      deleteItem(item) {
+        if (confirm('Do you want to delete?')) {
+          new RouteApi().delete('/ajax/action.php?task=delete&id=' + item.id).then(function (jsonData) {
+            jnotice(jsonData.message);
+            app.searchItem();
+          });
+        }
+      },
+      searchItem() {
+        this.buildQueryItem();
+
+        new RouteApi().get(this.getItemUrl).then(function (jsonData) {
+          app.items = jsonData.data;
+          app.paging.total = jsonData.total;
+          app.paging.page = Math.ceil(jsonData.total / 20);
+        });
+
+
+      },
+      nextPage(page) {
+        this.paging.offset = page;
+        this.searchItem();
+      },
+      selectItem(item) {
+        this.screen = 'detail';
+        this.itemDetail = item;
+      },
+      save() {
+        let data = this.itemDetail;
+        new RouteApi().put(fvn_url + '/ajax/action.php?task=save', data).then(function (jsonData) {
+          if (jsonData.result) {
+            jnotice(jsonData.message);
+            app.updateCurrentItem();
+
+          } else {
+            jnotice(jsonData.message);
+          }
+          app.screen = 'list';
+        });
+      },
+      updateCurrentItem() {
+        for (i in this.items) {
+          if (this.items[i].id == this.itemDetail.id) {
+            this.items[i] = this.itemDetail;
+          }
+        }
+      },
+      displayDate(date) {
+        if (date == undefined || date == null) {
+          return '';
+        }
+        return date.substr(0, 16);
+      },
+      displayNumber(value) {
+        return formatMoney(value) + 'đ';
+      },
+      buildQueryItem() {
+        this.getItemUrl = fvn_url + '/ajax/action.php?&task=getItems';
+        this.getItemUrl += "&filter_search=" + this.querySearch;
+        this.getItemUrl += "&filter_from_date=" + (this.queryFromDate);
+        this.getItemUrl += "&filter_to_date=" + (this.queryToDate);
+        this.getItemUrl += "&limit=20&offset=" + (this.paging.offset);
+
+      },
+
+    },
+    watch: {
+
+    },
+  });
+</script>
