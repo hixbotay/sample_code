@@ -1,6 +1,3 @@
- # Sample command to work with compress in linux
-
-
 # gz
 Compress
 ```
@@ -21,4 +18,24 @@ tar -xzvf archive.tar.gz
 Extract file to directory
 ```
 tar -xf file_name.tar.gz -C /target/directory
+```
+# zip
+zip file
+```
+zip myfile.zip /dir/name
+zip -x myfile.zip /dir/name -x /dir/name/ignoreDir1/**\* /dir/name/ignoreDir2/**\* #zip with exclude files
+```
+unzip file
+```
+unzip filename.zip
+unzip -P PasswOrd filename.zip
+unzip -o filename.zip #force override
+```
+unzip to different dir
+```
+unzip filename.zip -d /path/to/directory
+```
+unzip with exclude
+```
+unzip filename.zip -x "*.git/*"
 ```
