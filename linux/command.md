@@ -72,6 +72,14 @@ function delnginxlogs() {
   echo "--------------- DONE: NGINX logs cleared ... ---------------"
 }
 ```
+Show all process
+```
+ps -ef
+```
+Show process with filter
+```
+ps -ef | grep text_to_search
+```
 Extend disk
 ```
 df -hT #to check
