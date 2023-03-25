@@ -3,7 +3,7 @@
 set default folder when login
 copy below command to last line of /home/centos/.bashrc
 ```
-cd /home/pay.sellonboard.com/public_html
+cd /path/to/folder
 ```
 Crontab
 ```
@@ -86,6 +86,10 @@ df -hT #to check
 lsblk #show disk volumn
 sudo growpart /free_disk_path 1
 sudo xfs_growfs -d /
+```
+curl download file
+```
+curl https://your-domain/file.pdf
 ```
 # DATABASE
 Dump the database to a sql file
