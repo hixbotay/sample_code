@@ -89,7 +89,7 @@ sudo xfs_growfs -d /
 ```
 curl download file
 ```
-curl https://your-domain/file.pdf
+curl https://your-domain/file.pdf --output result.tar.gz
 ```
 # DATABASE
 Dump the database to a sql file
