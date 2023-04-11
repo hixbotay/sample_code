@@ -43,3 +43,9 @@ Cancel rebase
 ```
 git rebase --abort
 ```
+revert commit
+```
+git log => copy hash of latest commit and commit before commit you want revert
+git reset --hard commit_you_want_revert
+git reset --soft commiit_latest
+```
