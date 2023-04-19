@@ -49,3 +49,14 @@ git log => copy hash of latest commit and commit before commit you want revert
 git reset --hard commit_you_want_revert
 git reset --soft commiit_latest
 ```
+Process conflic
+```
+git log => copy hash of commit before the conflic happen
+git reset --soft commit_hash_before_conflic
+#copy all file change to other folder
+git fetch
+git rebase origin/latest_branch_name
+#copy all change files from folder above to git
+#using editor to revert change not is your change
+git commit
+git push -f
