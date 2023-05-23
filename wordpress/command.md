@@ -52,3 +52,27 @@ $args = array(
 );
 $items = (new WP_Query( $args ))->get_posts();
 ```
+Add option in appearence setting page
+```
+add_action('customize_register', function ($wp_customize) {
+	
+	$wp_customize->add_section('fvb_contact', array(
+        'title'    => 'Contact',
+        'description' => '',
+        'priority' => 120,
+    ));
+	
+	$wp_customize->add_setting('contact_phone', array(
+        'capability' => 'edit_theme_options',
+        'type'       => 'option',
+    ));
+
+    $wp_customize->add_control('contact_phone', array(
+        'settings' => 'contact_phone',
+        'label'    => 'Phone contact',
+        'section'  => 'fvb_contact',
+        'type'     => 'text',
+    ));
+});
+get_option('contact_phone')
+```
