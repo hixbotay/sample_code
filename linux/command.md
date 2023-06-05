@@ -35,6 +35,10 @@ Find 10 largest folder in folder /var
 ```
 du -a /var | sort -n -r | head -n 10
 ```
+Find latest php file newer than date
+```
+find ../public_html -type f -name "*.php" -newermt "2023-05-17"
+```
 Delete file content
 ```
 > file_name.txt
