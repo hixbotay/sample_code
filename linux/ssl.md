@@ -7,6 +7,10 @@ Add new domain
 ```
 certbot certonly --standalone -d www.example.com
 ```
+Add domain and restart nginx
+```
+service nginx stop && certbot certonly --standalone -d www.example.com && service nginx start
+```
 Add new domain without stop nginx
 > Make sure /etc/nginx/conf.d/*.conf have the block
 `location ~ /.well-known {
