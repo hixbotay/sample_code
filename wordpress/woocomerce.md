@@ -12,10 +12,8 @@ add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
 	$fields['billing']['billing_address_1']['label']='Địa chỉ';
 	$fields['billing']['billing_address_1']['placeholder']='Số nhà/ngõ(ngách)/đường/phường(xã)/quận(huyện)';
 	$fields['billing']['billing_phone']['label']='SĐT/Zalo để gửi thông báo xác nhận đơn hàng';
-	$fields['billing']['billing_first_name']['label']='Họ và tên';
-	$fields['shipping']['shipping_state']['label']="Tỉnh/Thành phố";
-	$fields['billing']['billing_email']['required']=0;
-	
+	$fields['billing']['billing_first_name']['label']='Họ và tên';	
+	$fields['billing']['billing_email']['required']=0;	
 	$fields['billing']['billing_state']['label']="Tỉnh/Thành phố";
 	$fields['billing']['billing_state']['required']=1;
 	
@@ -23,10 +21,9 @@ add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
 	$fields['billing']['billing_phone']['priority'] = 2;
 	$fields['billing']['billing_state']['priority'] = 3;
 	$fields['billing']['billing_address_1']['priority'] = 4;
-	$fields['billing']['billing_email']['priority'] = 5;
-	
-	
-	
+	$fields['billing']['billing_email']['priority'] = 5;	
+
+	$fields['shipping']['shipping_state']['label']="Tỉnh/Thành phố";
 	unset($fields['shipping']['shipping_last_name']);
 	unset($fields['shipping']['shipping_company']);
 	unset($fields['shipping']['shipping_country']);
@@ -36,8 +33,7 @@ add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
 	$fields['shipping']['shipping_address_1']['type']='textarea';
 	$fields['shipping']['shipping_address_1']['required']=0;
 	$fields['shipping']['shipping_first_name']['required']=0;
-	$fields['shipping']['shipping_last_name']['required']=0;	
-	
+	$fields['shipping']['shipping_last_name']['required']=0;		
 	
 	$fields["billing"] = [
 		'billing_first_name' => $fields["billing"]['billing_first_name'],
@@ -46,8 +42,6 @@ add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
 		'billing_address_1' => $fields["billing"]['billing_address_1'],
 		'billing_email' => $fields["billing"]['billing_email'],
 	];
-	//$fields["billing"] = $orderFields;
-	//echo '<pre>';print_r($fields);
 	return $fields;
 });
 add_filter( 'woocommerce_states', function ($states ) {
