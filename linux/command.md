@@ -95,6 +95,22 @@ curl download file
 ```
 curl https://your-domain/file.pdf --output result.tar.gz
 ```
+# User
+Create new user with auth by key
+```
+#create user folder
+mkdir /user/user1
+#generate rsa key
+cd /user/user1
+ssh-keygen -t rsa
+#create user
+sudo adduser -d /user/user1 -m -G [group] [user1]
+# Copy the public key to the user's authorized_keys file
+cat public_key.pub >> /user/user1/.ssh/authorized_keys
+chmod 600 /home/demo/gozen/.ssh/authorized_keys
+chown -R user1:user1 /user/user1
+```
+
 # DATABASE
 Dump the database to a sql file
 ```
