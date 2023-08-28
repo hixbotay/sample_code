@@ -13,6 +13,7 @@ Disable auto udpate
 define( 'WP_AUTO_UPDATE_CORE', false );
 add_filter( 'auto_update_plugin', '__return_false' );
 add_filter( 'auto_update_theme', '__return_false' );
+add_filter( 'pre_site_transient_update_core', '__return_null' );
 ```
 Limit post revision
 ```
