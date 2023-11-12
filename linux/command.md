@@ -1,5 +1,9 @@
 # Common command in linux
 
+Check webserver
+```
+netstat -tnlp | grep 80
+```
 set default folder when login
 copy below command to last line of /home/centos/.bashrc
 ```
