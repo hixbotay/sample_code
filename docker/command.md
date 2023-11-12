@@ -1,3 +1,11 @@
+Build image
+```
+docker build -t image-name .
+```
+Run image
+```
+docker 
+```
 Run docker compose
 ```
 docker compose up
@@ -5,6 +13,11 @@ docker compose up
 Remove docker compose
 ```
 docker compose down
+```
+Access container
+```
+docker ps -a
+docker exec -it {workspace-container-id} bash
 ```
 Clear all container
 ```
