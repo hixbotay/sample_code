@@ -22,7 +22,7 @@ tar -xf file_name.tar.gz -C /target/directory
 # zip
 zip file
 ```
-zip myfile.zip /dir/name
+zip -r myfile.zip /dir/name
 zip -x myfile.zip /dir/name -x /dir/name/ignoreDir1/**\* /dir/name/ignoreDir2/**\* #zip with exclude files
 ```
 unzip file
