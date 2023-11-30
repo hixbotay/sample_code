@@ -60,3 +60,13 @@ git rebase origin/latest_branch_name
 #using editor to revert change not is your change
 git commit
 git push -f
+```
+Add ssh key
+```
+eval "$(ssh-agent -s)"
+ssh-add ~/your_key_path
+```
+Action with ssh key
+```
+git -c core.sshCommand='ssh -i <your git key path>' <git command>
+```
