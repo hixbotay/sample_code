@@ -5,7 +5,11 @@ certbot certificates
 ```
 Add new domain
 ```
-certbot certonly --standalone -d www.example.com
+certbot certonly --standalone -d example.com
+```
+complete command add new domain with nginx
+```
+service nginx stop && certbot certonly --standalone -d example.com && service nginx start
 ```
 Add domain and restart nginx
 ```
