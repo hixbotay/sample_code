@@ -16,3 +16,16 @@ Print x string before number
 ```
 x = '{:x>8}'.format(number)
 ```
+# get console ouput from function
+```
+import sys
+import io
+
+backup = sys.stdout
+sys.stdout = io.StringIO()     # capture output
+to_do_function()
+out = sys.stdout.getvalue() # release output
+
+sys.stdout.close()  # close the stream 
+sys.stdout = backup # restore original stdout
+```
