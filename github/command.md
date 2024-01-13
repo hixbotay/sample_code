@@ -38,6 +38,7 @@ git stash apply
 Merger from other branch
 ```
 git fetch && git rebase origin/branch_name
+git merge branch_need_merge_to_current_branch #option 2
 ```
 Cancel rebase
 ```
