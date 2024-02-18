@@ -99,6 +99,15 @@ curl download file
 ```
 curl https://your-domain/file.pdf --output result.tar.gz
 ```
+#permission
+set all file chmod to 644, all dir to 755
+```
+chmod -R a=r,u+w,a+X /path/dir
+```
+Allow file excuteable
+```
+chmod +x my_script.sh
+```
 # User
 Create new user with auth by key
 ```
