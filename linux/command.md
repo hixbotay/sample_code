@@ -133,3 +133,7 @@ Restore the database
 ```
 mysql -u username -p database_name < backup_name.sql
 ```
+Execute query
+```
+mysql -u username -p -D database_name -e "CREATE DATABASE database_name;"
+```
