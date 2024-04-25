@@ -109,6 +109,18 @@ Allow file excuteable
 chmod +x my_script.sh
 ```
 # User
+List user
+```
+less /etc/passwd
+```
+Check whether a user exists in the Linux system
+```
+getent passwd | grep jack
+```
+List group
+```
+cat /etc/group
+```
 Create new user with auth by key
 ```
 #create user folder
@@ -122,6 +134,10 @@ sudo adduser -d /user/user1 -m -G [group] [user1]
 cat public_key.pub >> /user/user1/.ssh/authorized_keys
 chmod 600 /home/demo/gozen/.ssh/authorized_keys
 chown -R user1:user1 /user/user1
+```
+Delete user
+```
+userdel user_name
 ```
 
 # DATABASE
