@@ -31,6 +31,10 @@ Checking Background Jobs
 jobs
 ```
 # File
+Check dir size
+```
+du -sh directory_name
+```
 Check largest files in hard disk
 ```
 DU -HSX * | SORT -RH | HEAD -NX
@@ -80,6 +84,7 @@ function delnginxlogs() {
   echo "--------------- DONE: NGINX logs cleared ... ---------------"
 }
 ```
+# Process
 Show all process
 ```
 ps -ef
