@@ -47,6 +47,10 @@ Find latest php file newer than date
 ```
 find ../public_html -type f -name "*.php" -newermt "2023-05-17"
 ```
+Find latest file have been change within 1 days exclude cache file
+```
+find ./public_html/ -type f -mtime -1 -name "*.php" | grep -v cache
+```
 Delete file content
 ```
 > file_name.txt
