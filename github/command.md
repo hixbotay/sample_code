@@ -71,3 +71,21 @@ Action with ssh key
 ```
 git -c core.sshCommand='ssh -i <your git key path>' <git command>
 ```
+
+# git secret
+https://www.dropbox.com/scl/fi/3ngenh2ps4wc3jp5azn9r/git_secrets.pptx?rlkey=h1dr913j1m41kzb1b3xjt5agi&dl=0
+install 
+```
+aws: git clone https://github.com/awslabs/git-secrets.git
+aws, azue, GCP: git clone https://github.com/msalemcode/git-secrets.git
+After clone: ./install.ps1
+```
+Implement for project
+```
+cd my-repo
+git secrets install
+Provider AWS: git secrets --register-aws
+Provider Azure: git secrets --register-azure
+Provider GCP: git secrets --register-gcp
+Custom pattern: git secrets --add-provider --cat /path/to/secret/file/patterns
+```
