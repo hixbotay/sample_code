@@ -73,7 +73,6 @@ git -c core.sshCommand='ssh -i <your git key path>' <git command>
 ```
 
 # git secret
-https://www.dropbox.com/scl/fi/3ngenh2ps4wc3jp5azn9r/git_secrets.pptx?rlkey=h1dr913j1m41kzb1b3xjt5agi&dl=0
 install 
 ```
 aws: git clone https://github.com/awslabs/git-secrets.git
