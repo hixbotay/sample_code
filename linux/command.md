@@ -97,6 +97,10 @@ Show process with filter
 ```
 ps -ef | grep text_to_search
 ```
+kill all nginx process
+```
+kill $(ps aux | grep '[n]ginx' | awk '{print $2}')
+```
 Extend disk
 ```
 df -hT #to check
