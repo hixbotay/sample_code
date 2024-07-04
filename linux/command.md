@@ -166,3 +166,11 @@ Execute query
 ```
 mysql -u username -p -D database_name -e "CREATE DATABASE database_name;"
 ```
+# repo
+Resolve error yum install in centos, update repo
+```
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+yum update -y
+yum clean all
+```
