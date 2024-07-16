@@ -97,6 +97,10 @@ Show process with filter
 ```
 ps -ef | grep text_to_search
 ```
+check path of running pid
+```
+readlink -f /proc/<pid>/exe
+```
 kill all nginx process
 ```
 kill $(ps aux | grep '[n]ginx' | awk '{print $2}')
