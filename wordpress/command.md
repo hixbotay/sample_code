@@ -26,6 +26,10 @@ add_filter( 'site_transient_update_plugins', function ( $value ) {
     return $value;
 } );
 ```
+Disable cron to improve performance
+```
+define('DISABLE_WP_CRON', true) ;
+```
 Query
 ```
 $args = array(
