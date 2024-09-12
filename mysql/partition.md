@@ -72,7 +72,7 @@ END//
 
 DELIMITER ;
 ```
-Create table with auto partition
+# Create table with auto partition
 ```
 CREATE TABLE products (
     product_id    INT(6),
